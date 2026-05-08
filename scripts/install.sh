@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # CrossOS install script runs to make the distro .
-# VERSION = 0.0.1
-# Date = 7/5/26
+# VERSION = 0.0.2
+# Date = 8/5/26
 
 set -e # Exit if command fails in the script
 
@@ -16,13 +16,20 @@ REPO_DIR=~/CrossOS
 
 install_packages() {
   local file=$1
-  echo "Installing packages from $file..."
   while IFS= read -r pkg || [[ -n "$pkg" ]]; do
     [[ -z "$pkg" || "$pkg" == \#* ]] && continue
-    echo "Installing $pkg..."
-    sudo pacman -S --noconfirm "$pkg"
+    if pacman -Q "$pkg" &>/dev/null; then
+      echo "$pkg already installed, skipping..."
+    else
+      echo "Installing $pkg..."
+      sudo pacman -S --noconfirm "$pkg"
+    fi
   done <"$file"
 }
+
+echo "Installing amazing pakages"
+
 install_packages "$REPO_DIR/packages/base.txt"
 
+echo "Setting the fish as the defualt shell"
 echo "fish" >>~/.bashrc
