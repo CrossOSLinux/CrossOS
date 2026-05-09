@@ -1,40 +1,67 @@
 #!/bin/bash
 # Cross OS - Hyprland Builder
-# Builds latest Hyprland from AUR when repos are outdated
-# Run time: 30-60 minutes on Pi 5
+# Builds Hyprland and all hypr dependencies from AUR
+# Run time: 1-2 hours on Pi 5
 set -e
 
-echo "Building the newest and best hyprland"
+echo "================================"
+echo "  Cross OS - Building Hyprland"
+echo "================================"
 
-# Check if yay is installed, install if not
+# Install yay if not present
 if ! command -v yay &>/dev/null; then
-  echo "Installing yay AUR helper..."
+  echo "Installing yay..."
   sudo pacman -S --noconfirm base-devel git
   cd /tmp
   git clone https://aur.archlinux.org/yay.git
   cd yay
   makepkg -si --noconfirm
   cd ~
-  echo "yay installed."
-else
-  echo "yay already installed, skipping..."
 fi
 
-# Check current Hyprland version if installed
-if command -v hyprland &>/dev/null; then
-  CURRENT=$(hyprland --version 2>&1 | grep -oP '\d+\.\d+' | head -1)
-  echo "Current Hyprland version: $CURRENT"
-  echo "Building latest from AUR..."
-else
-  echo "Hyprland not installed, building from AUR..."
-fi
+echo "--- Removing outdated hypr packages ---"
+sudo pacman -R --noconfirm \
+  hyprland \
+  hyprlang \
+  hyprutils \
+  hyprgraphics \
+  hyprwayland-scanner \
+  xdg-desktop-portal-hyprland \
+  hyprland-qt-support \
+  hyprland-qtutils \
+  hyprcursor 2>/dev/null || true
 
-# Build and install
-echo "Starting build... "
-echo ""
+echo "--- Building hypr dependencies in order ---"
 
+echo "Building hyprwayland-scanner..."
+yay -S --noconfirm hyprwayland-scanner-git
+
+echo "Building hyprlang..."
+yay -S --noconfirm hyprlang-git
+
+echo "Building hyprutils..."
+yay -S --noconfirm hyprutils-git
+
+echo "Building hyprgraphics..."
+yay -S --noconfirm hyprgraphics-git
+
+echo "Building hyprcursor..."
+yay -S --noconfirm hyprcursor-git
+
+echo "Building xdg-desktop-portal-hyprland..."
+yay -S --noconfirm xdg-desktop-portal-hyprland-git
+
+echo "Building hyprland-qt-support..."
+yay -S --noconfirm hyprland-qt-support-git
+
+echo "Building hyprland-qtutils..."
+yay -S --noconfirm hyprland-qtutils-git
+
+echo "--- Building Hyprland ---"
 yay -S --noconfirm hyprland-git
 
-sudo pacman -R hyprland
-
-hyprland --version
+echo ""
+echo "================================"
+echo "  Build complete."
+echo "  Run: hyprland --version"
+echo "================================"
