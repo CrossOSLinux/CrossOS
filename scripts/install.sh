@@ -12,24 +12,11 @@ sudo pacman -Syu --noconfirm
 
 # Install enough packages to use the system
 
-REPO_DIR=~/CrossOS
+SCRIPTS_DIR=~/CrossOS/scripts
 
-install_packages() {
-  local file=$1
-  while IFS= read -r pkg || [[ -n "$pkg" ]]; do
-    [[ -z "$pkg" || "$pkg" == \#* ]] && continue
-    if pacman -Q "$pkg" &>/dev/null; then
-      echo "$pkg already installed, skipping..."
-    else
-      echo "Installing $pkg..."
-      sudo pacman -S --noconfirm "$pkg"
-    fi
-  done <"$file"
-}
+echo "Running complete installer..."
 
-echo "Installing amazing pakages"
+bash "$SCRIPTS_DIR/packages.sh"
+bash "$SCRIPTS_DIR/configs.sh"
 
-install_packages "$REPO_DIR/packages/base.txt"
-
-echo "Setting the fish as the defualt shell"
-echo "fish" >>~/.bashrc
+echo "Install Completed"

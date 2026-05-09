@@ -1,7 +1,11 @@
 fish
-git 
-ghostly
+git
+foot
 neovim
 hyprland
-
-
+fuzzel
+xdg-desktop-portal-hyprland
+polkit-kde-agent
+qt5-waylnad
+qt6-wayland
+waybar
