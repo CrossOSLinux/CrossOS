@@ -10,54 +10,52 @@ echo "================================"
 
 # Install yay if not present
 if ! command -v yay &>/dev/null; then
-  echo "Installing yay..."
-  sudo pacman -S --noconfirm base-devel git
-  cd /tmp
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
-  makepkg -si --noconfirm
-  cd ~
+    echo "Installing yay..."
+    sudo pacman -S --noconfirm base-devel git
+    cd /tmp
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ~
 fi
 
-echo "--- Removing outdated hypr packages ---"
-sudo pacman -R --noconfirm \
-  hyprland \
-  hyprlang \
-  hyprutils \
-  hyprgraphics \
-  hyprwayland-scanner \
-  xdg-desktop-portal-hyprland \
-  hyprland-qt-support \
-  hyprland-qtutils \
-  hyprcursor 2>/dev/null || true
+# Function that removes stable version then builds git version
+replace_with_git() {
+    local pkg=$1
+    echo "--- Replacing $pkg with git version ---"
+    
+    # Remove stable version if installed, ignore dependency errors
+    if pacman -Q "$pkg" &>/dev/null; then
+        echo "Removing $pkg..."
+        sudo pacman -Rdd --noconfirm "$pkg" 2>/dev/null || true
+    fi
+    
+    # Remove git version if already installed to avoid conflicts
+    if pacman -Q "${pkg}-git" &>/dev/null; then
+        echo "${pkg}-git already installed, skipping..."
+        return
+    fi
+    
+    echo "Building ${pkg}-git..."
+    yay -S --noconfirm "${pkg}-git"
+    echo "${pkg}-git installed."
+}
 
-echo "--- Building hypr dependencies in order ---"
+# Build in dependency order
+replace_with_git "hyprwayland-scanner"
+replace_with_git "hyprlang"
+replace_with_git "hyprutils"
+replace_with_git "hyprgraphics"
+replace_with_git "hyprcursor"
+replace_with_git "xdg-desktop-portal-hyprland"
+replace_with_git "hyprland-qt-support"
+replace_with_git "hyprland-qtutils"
 
-echo "Building hyprwayland-scanner..."
-yay -S --noconfirm hyprwayland-scanner-git
-
-echo "Building hyprlang..."
-yay -S --noconfirm hyprlang-git
-
-echo "Building hyprutils..."
-yay -S --noconfirm hyprutils-git
-
-echo "Building hyprgraphics..."
-yay -S --noconfirm hyprgraphics-git
-
-echo "Building hyprcursor..."
-yay -S --noconfirm hyprcursor-git
-
-echo "Building xdg-desktop-portal-hyprland..."
-yay -S --noconfirm xdg-desktop-portal-hyprland-git
-
-echo "Building hyprland-qt-support..."
-yay -S --noconfirm hyprland-qt-support-git
-
-echo "Building hyprland-qtutils..."
-yay -S --noconfirm hyprland-qtutils-git
-
+# Hyprland itself
 echo "--- Building Hyprland ---"
+if pacman -Q "hyprland" &>/dev/null; then
+    sudo pacman -Rdd --noconfirm hyprland 2>/dev/null || true
+fi
 yay -S --noconfirm hyprland-git
 
 echo ""
