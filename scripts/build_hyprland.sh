@@ -19,6 +19,12 @@ if ! command -v yay &>/dev/null; then
     cd ~
 fi
 
+
+# Add this at the top of build_hyprland.sh after the yay install check
+echo "--- Removing all existing hypr packages ---"
+sudo pacman -Rdd --noconfirm hyprland hyprlang hyprutils hyprgraphics hyprwayland-scanner xdg-desktop-portal-hyprland hyprland-qt-support hyprland-qtutils hyprcursor 2>/dev/null || true
+echo "All hypr packages removed."
+
 # Function that removes stable version then builds git version
 replace_with_git() {
     local pkg=$1
