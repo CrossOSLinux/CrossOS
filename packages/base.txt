@@ -6,6 +6,6 @@ hyprland
 fuzzel
 xdg-desktop-portal-hyprland
 polkit-kde-agent
-qt5-waylnad
+qt6-waylandd
 qt6-wayland
 waybar
