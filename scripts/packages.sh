@@ -11,15 +11,27 @@ install_packages() {
         if pacman -Q "$pkg" &>/dev/null; then
             echo "$pkg already installed, skipping..."
         else
-            echo "Installing $pkg..."
-            sudo pacman -S --noconfirm "$pkg"
+            install_with_retry "$pkg"
         fi
     done < "$file"
 }
 
+install_with_retry() {
+    local pkg=$1
+    local attempts=0
+    until sudo pacman -S --noconfirm "$pkg"; do
+        attempts=$((attempts + 1))
+        if [ $attempts -eq 5 ]; then
+            echo "Failed to install $pkg after 5 attempts, skipping..."
+            return
+        fi
+        echo "Network error, retry $attempts of 5 for $pkg..."
+        sleep 3
+    done
+}
+
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
-
 
 case "$1" in
     --dev)
