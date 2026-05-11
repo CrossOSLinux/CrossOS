@@ -3,4 +3,7 @@ lazygit
 tmux
 python
 gcc
-
+ripgrep
+fd
+zoxide
+unzip

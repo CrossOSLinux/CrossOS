@@ -1,0 +1,46 @@
+# Cross OS - Complete Packages
+# Full featured Cross OS experience
+
+# Media
+mpv
+imv
+
+# File management
+yazi
+
+# System tools
+btop
+man-db
+man-pages
+
+# Fonts
+ttf-jetbrains-mono
+ttf-nerd-fonts-symbols
+noto-fonts
+noto-fonts-emoji
+
+# Audio
+pipewire
+pipewire-pulse
+wireplumber
+
+# Bluetooth
+bluez
+bluez-utils
+
+# Printing
+cups
+
+# Archive tools
+zip
+p7zip
+tar
+
+# Network tools
+wget
+curl
+rsync
+
+# Document viewer
+zathura
+zathura-pdf-mupdf
