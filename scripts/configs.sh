@@ -18,8 +18,6 @@ cp "$CONFIGS/waybar/config.jsonc" ~/.config/waybar/config.jsonc
 cp "$CONFIGS/waybar/style.css" ~/.config/waybar/style.css
 echo "Waybar config installed."
 
-
-
 # # Foot
 mkdir -p ~/.config/foot
 cp "$CONFIGS/foot/foot.ini" ~/.config/foot/foot.ini
@@ -34,5 +32,10 @@ echo "Fuzzel config installed."
 # Greetd
 sudo cp "$CONFIGS/greetd/config.toml" /etc/greetd/config.toml
 echo "Greetd configured"
+
+# Fish
+mkdir -p ~/.config/fish/functions
+cp "$CONFIGS/fish/functions/fish_prompt.fish" ~/.config/fish/functions/fish_prompt.fish
+
 
 echo "All configs installed."
