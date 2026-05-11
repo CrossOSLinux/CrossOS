@@ -12,6 +12,12 @@ echo "Enabling services..."
 # Greetd - display manager
 sudo systemctl enable greetd
 
+# Git
+git config --global user.name "Vaibhavk726"
+git config --global user.email "vaibhavninja726@gmail.com"
+git config --global init.defaultBranch main
+
+
 echo "Services configured."
 
 # Fish setup

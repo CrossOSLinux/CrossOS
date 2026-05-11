@@ -6,9 +6,6 @@
 
 set -e # Exit if command fails in the script
 
-# Update Arch system
-echo "Updating Arch wait for it . "
-sudo pacman -Syu --noconfirm
 
 # Install enough packages to use the system
 
