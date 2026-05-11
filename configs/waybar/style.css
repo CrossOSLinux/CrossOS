@@ -1,0 +1,104 @@
+* {
+    font-family: monospace;
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(40, 40, 55, 0.90);
+    color: #cdd6f4;
+}
+
+tooltip {
+    background-color: rgba(40, 40, 55, 0.95);
+    border: 1px solid #45475a;
+    border-radius: 6px;
+}
+
+#cpu,
+#memory,
+#battery,
+#network,
+#clock,
+#workspaces,
+#window {
+    padding: 0 12px;
+    margin: 4px 2px;
+    border-radius: 6px;
+}
+
+#cpu {
+    background-color: rgba(166, 227, 161, 0.15);
+    color: #a6e3a1;
+}
+
+#memory {
+    background-color: rgba(137, 180, 250, 0.15);
+    color: #89b4fa;
+}
+
+#battery {
+    background-color: rgba(166, 227, 161, 0.15);
+    color: #a6e3a1;
+}
+
+#battery.charging {
+    background-color: rgba(166, 227, 161, 0.25);
+    color: #a6e3a1;
+}
+
+#battery.warning {
+    background-color: rgba(249, 226, 175, 0.15);
+    color: #f9e2af;
+}
+
+#battery.critical {
+    background-color: rgba(243, 139, 168, 0.15);
+    color: #f38ba8;
+}
+
+#network {
+    background-color: rgba(137, 220, 235, 0.15);
+    color: #89dceb;
+}
+
+#network.disconnected {
+    background-color: rgba(243, 139, 168, 0.15);
+    color: #f38ba8;
+}
+
+#clock {
+    background-color: rgba(203, 166, 247, 0.15);
+    color: #cba6f7;
+    font-weight: bold;
+}
+
+#workspaces {
+    background-color: rgba(69, 71, 90, 0.50);
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #6c7086;
+    background: transparent;
+    border-radius: 6px;
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #cdd6f4;
+}
+
+#workspaces button.active {
+    background-color: rgba(203, 166, 247, 0.25);
+    color: #cdd6f4;
+    font-weight: bold;
+}
+
+#window {
+    background-color: rgba(69, 71, 90, 0.40);
+    color: #a6adc8;
+    font-style: italic;
+}

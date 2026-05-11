@@ -13,15 +13,4 @@ echo "Enabling services..."
 sudo systemctl enable greetd
 
 echo "Services configured."
-
-# --- Neovim ---
-if pacman -Q neovim &>/dev/null; then
-    echo "Setting up neovim..."
-    # Install lazy.nvim plugin manager
-    git clone --filter=blob:none \
-        https://github.com/folke/lazy.nvim.git \
-        --branch=stable \
-        ~/.local/share/nvim/lazy/lazy.nvim
-fi
-
 echo "Setup complete "

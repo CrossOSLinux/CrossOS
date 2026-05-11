@@ -13,11 +13,13 @@ cp "$CONFIGS/hyprland/hyprland.conf" ~/.config/hypr/hyprland.conf
 echo "Hyprland config installed."
 
 # Waybar
-# mkdir -p ~/.config/waybar
-# cp "$CONFIGS/waybar/config.jsonc" ~/.config/waybar/config.jsonc
-# cp "$CONFIGS/waybar/style.css" ~/.config/waybar/style.css
-# echo "Waybar config installed."
-#
+mkdir -p ~/.config/waybar
+cp "$CONFIGS/waybar/config.jsonc" ~/.config/waybar/config.jsonc
+cp "$CONFIGS/waybar/style.css" ~/.config/waybar/style.css
+echo "Waybar config installed."
+
+
+
 # # Foot
 # mkdir -p ~/.config/foot
 # cp "$CONFIGS/foot/foot.ini" ~/.config/foot/foot.ini
