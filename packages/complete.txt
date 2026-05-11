@@ -33,7 +33,7 @@ cups
 
 # Archive tools
 zip
-p7zip
+7zip
 tar
 
 # Network tools
