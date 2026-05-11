@@ -79,8 +79,6 @@ for i in 16x16 32x32 48x48 64x64 128x128; do
         /usr/share/icons/hicolor/$i/apps/zen-browser.png
 done
 
-sudo update-icon-caches /usr/share/icons/*
-
 # Cleanup
 rm -rf /tmp/zen-browser-arm64-copr
 

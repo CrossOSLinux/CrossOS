@@ -26,6 +26,9 @@ echo "loading Fish service "
 # Launch fish from bashrc
 if ! grep -q "exec fish" ~/.bashrc; then
     echo '
+
+
+
 # Cross OS - Launch fish for interactive sessions
 if [[ $- == *i* ]]; then
     exec fish
@@ -36,7 +39,7 @@ else
 fi
 
 # Fish theme
-fish -c "fish_config theme choose 'ayu Dark'"
+fish_config theme choose 'ayu Dark'
 
 echo "Fish setup complete"
 

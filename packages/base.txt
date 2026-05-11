@@ -13,3 +13,4 @@ wget
 curl
 gtk-update-icon-cache
 greetd
+yay

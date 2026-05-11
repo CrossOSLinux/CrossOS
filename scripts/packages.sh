@@ -20,20 +20,6 @@ install_packages() {
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# Install yay if not present
-if ! command -v yay &>/dev/null; then
-    echo "Installing yay..."
-    cd /tmp
-    git clone https://aur.archlinux.org/yay.git
-    cd yay
-    makepkg -si --noconfirm
-    cd ~
-    rm -rf /tmp/yay
-    echo "yay installed."
-else
-    echo "yay already installed, skipping."
-fi
-
 
 case "$1" in
     --dev)
