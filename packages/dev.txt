@@ -1,0 +1,6 @@
+neovim
+lazygit
+tmux
+python
+gcc
+

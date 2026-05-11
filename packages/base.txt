@@ -1,7 +1,6 @@
 fish
 git
 foot
-neovim
 hyprland
 fuzzel
 xdg-desktop-portal-hyprland
@@ -9,3 +8,8 @@ polkit-kde-agent
 qt5-wayland
 qt6-wayland
 waybar
+base-devel
+wget
+curl
+gtk-update-icon-cache
+greetd

@@ -28,4 +28,9 @@ echo "Hyprland config installed."
 # cp "$CONFIGS/fuzzel/fuzzel.ini" ~/.config/fuzzel/fuzzel.ini
 # echo "Fuzzel config installed."
 #
+
+# Greetd
+sudo cp "$CONFIGS/greetd/config.toml" /etc/greetd/config.toml
+echo "Greetd configured"
+
 echo "All configs installed."

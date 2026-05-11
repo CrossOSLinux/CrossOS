@@ -18,5 +18,6 @@ echo "Running complete installer..."
 
 bash "$SCRIPTS_DIR/packages.sh"
 bash "$SCRIPTS_DIR/configs.sh"
+bash "$SCRIPTS_DIR/setup.sh"
 
 echo "Install Completed"
