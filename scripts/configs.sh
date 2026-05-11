@@ -21,14 +21,14 @@ echo "Waybar config installed."
 
 
 # # Foot
-# mkdir -p ~/.config/foot
-# cp "$CONFIGS/foot/foot.ini" ~/.config/foot/foot.ini
-# echo "Foot config installed."
+mkdir -p ~/.config/foot
+cp "$CONFIGS/foot/foot.ini" ~/.config/foot/foot.ini
+echo "Foot config installed."
 
 # # Fuzzel
-# mkdir -p ~/.config/fuzzel
-# cp "$CONFIGS/fuzzel/fuzzel.ini" ~/.config/fuzzel/fuzzel.ini
-# echo "Fuzzel config installed."
+mkdir -p ~/.config/fuzzel
+cp "$CONFIGS/fuzzel/fuzzel.ini" ~/.config/fuzzel/fuzzel.ini
+echo "Fuzzel config installed."
 #
 
 # Greetd
