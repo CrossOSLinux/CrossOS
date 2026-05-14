@@ -7,3 +7,7 @@ ripgrep
 fd
 zoxide
 unzip
+wayvnc
+tailscale
+rust
+cargo
