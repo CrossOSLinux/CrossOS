@@ -50,7 +50,9 @@ else
 fi
 echo "Fish setup complete."
 
-echo "================================"
-echo "  Setup complete."
-echo "  Reboot to finish."
-echo "================================"
+# Network manager 
+sudo systemctl enable NetworkManager
+sudo systemctl disable dhcpcd
+
+echo "--- Setup Complete ---"
+echo " Have fun <_> "
