@@ -4,23 +4,6 @@ set -e
 
 echo "Setting up Cross OS..."
 
-# --- Pacman network reliability ---
-echo "Configuring pacman..."
-if ! grep -q "wget" /etc/pacman.conf; then
-    sudo sed -i 's/#XferCommand.*/XferCommand = \/usr\/bin\/wget --tries=5 --timeout=30 -O %o %u/' /etc/pacman.conf
-    echo "Pacman network retry configured."
-else
-    echo "Pacman already configured, skipping."
-fi
-
-# --- Yay AUR helper ---
-if ! command -v yay &>/dev/null; then
-    echo "Installing yay..."
-    sudo pacman -S --noconfirm yay
-    echo "yay installed."
-else
-    echo "yay already installed, skipping."
-fi
 
 # --- Systemd Services ---
 echo "Enabling services..."
@@ -40,7 +23,8 @@ echo "Git configured."
 echo "Setting up fish..."
 if ! grep -q "exec fish" ~/.bashrc; then
     echo '
-# Cross OS - Launch fish for interactive sessions
+
+# Cross OS - Launch fish for interactive sessio
 if [[ $- == *i* ]]; then
     exec fish
 fi' >> ~/.bashrc
@@ -53,6 +37,8 @@ echo "Fish setup complete."
 # Network manager 
 sudo systemctl enable NetworkManager
 sudo systemctl disable dhcpcd
+sudo systemctl stop dhcpcd
 
 echo "--- Setup Complete ---"
+echo ""
 echo " Have fun <_> "
