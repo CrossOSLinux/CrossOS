@@ -30,7 +30,14 @@ install_with_retry() {
     done
 }
 
-echo "Updating system..."
+gum style \
+    --border normal \
+    --align center \
+    --bold \
+    --foreground "#b5ebff" \
+    --width 50 \
+    "Updating the system"
+
 sudo pacman -Syu --noconfirm
 
 case "$1" in

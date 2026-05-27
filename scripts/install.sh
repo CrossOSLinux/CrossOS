@@ -22,13 +22,18 @@ sudo pacman -Sy --noconfirm gum > /dev/null 2>&1
 
 SCRIPTS_DIR=~/CrossOS/scripts
 
-
 gum style \
-    --border normal \
-    --foreground "blue" \
-    --bold \
-    --width 0  \
-    "Running the isntaller"
+        --border double \
+        --border-background "#181f21" \
+        --border-foreground "#b8d7e3" \
+        --background "#181f21" \
+        --foreground "#b5ebff" \
+        --bold \
+        --width 75  \
+        --padding "1 1" \
+        --margin "2 2" \
+        --align center \
+        "Installing CrossOS! "
 
 
 bash "$SCRIPTS_DIR/packages.sh"
