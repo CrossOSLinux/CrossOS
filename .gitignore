@@ -124,6 +124,8 @@ htmlcov/
 *.tar.bz2
 *.rar
 *.7z
+*.img
+*.img.gz
 
 # --- Images and Media ---
 # Uncomment if you do not want to track these
