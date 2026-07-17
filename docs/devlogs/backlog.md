@@ -1,18 +1,41 @@
-Today on 2026.07.16
+# Migration Backlog 
 
-I am decideing to write detialed logs on the advancment of the project.
-The project has already gone thorugh a lot development but i have recently taken a radical change by migrating from a manjaro arch based distribution to an void linux based distribution.
-From now detailed docs will be written on the project with one document per implementation in devloogs and all decisions in the ./docs/ADRs folder.
+**Date**: 2026-07-16
+**Phase**: Migration to Void Linux.
 
-For a brief overciew of the project, read the following section:
+----
+### State
+Starting today detailed devlogs will be written with adrs as well, this will live in the docs/ directory.
 
-The project is named CrossOS it eveloved from being a custom operating system to an linux distribution.
-The current choice of base is void linux bare for the arm64 rpi5.
-The configs for fish, hyprland, fuzzel, greetd, waybar and foot terminal are in a minmal change where the have no special theming or features but are usable in a system and customised to some extent.
-There are currently 5 scripts in the repository all of which need to remade as they are the versions for arch manjaro, specifically the build_hyprland script has to be deleted.
-There is a package list already prepared in the ./packages folder with 3 lists in total, bare, dev and complete they are leveled so complete is bare + dev + extra packages.
-For some deicisions about the architecture check out ./docs/ADRs/
+Currently the void migration phase is underway in which the goal is to migrate from a manjaro-arch based system to an void Linux system.
 
-NOTE: Teh local repo has a backup of the previous CrossOs system, it will not be commited due to it being 3 GB and gihub does not allow that.
+### Overview 
+The project already has minimal working configurations of the decided packages.
+- fuzzel
+- greetd
+- hyprland
+- waybar
+- fodt
+These packages can be dropped in to have a minimal running setup.
+
+The project also has scripts that need to be refactored these are:
+- install.sh : Safety nets required.
+- packages.sh : Old pacman based installer.
+- config.sh : Better output and error detection.
+- build_hyprland.sh : Needs to be removed.
+- setup.sh : Old systemd script needs to be turned into runnit compatible.
+
+The project has 3 package lists in the packages/ directory:
+- base: minimum running software.
+- dev : bare + development utilities.
+- complete : bare + dev + daily driving utility.
+
+
+> [!Warning] Backup images stored locally.
+> Backup images that can be flashed to restore a specific working state are not backed up to github due to size limitations.
+> They are stored locally and all image files are ignored through the gitignore file.
+
+
+
 
 
