@@ -19,7 +19,7 @@ install_packages() {
 install_with_retry() {
     local pkg=$1
     local attempts=0
-    until sudo pacman -S --noconfirm "$pkg"; do
+    until sudo xbps-install -S --noconfirm "$pkg"; do
         attempts=$((attempts + 1))
         if [ $attempts -eq 5 ]; then
             echo "Failed to install $pkg after 5 attempts, skipping..."
