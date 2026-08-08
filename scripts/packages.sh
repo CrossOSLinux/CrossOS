@@ -47,7 +47,7 @@ gum style \
     --width 50 \
     "Updating the system"
 
-# XBPS system update
+
 sudo xbps-install -Syu
 
 case "$1" in
