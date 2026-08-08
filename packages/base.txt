@@ -1,7 +1,7 @@
-fish
+fish-shell
 git
 foot
-hyprland
+hyprland    
 fuzzel
 xdg-desktop-portal-hyprland
 polkit-kde-agent
@@ -13,5 +13,4 @@ wget
 curl
 gtk-update-icon-cache
 greetd
-yay
-networkmanager
+# NetwrokManager
