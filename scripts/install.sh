@@ -15,7 +15,8 @@ while true; do
 done 2>/dev/null &
 
 # silent install of gum
-sudo xbps-install -Sy gum > /dev/null 2>&1
+sudo pacman -Sy --noconfirm gum > /dev/null 2>&1
+
 
 # Install enough packages to use the system
 
