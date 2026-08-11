@@ -1,122 +1,8 @@
-# ================================
-# Cross OS - .gitignore
-# ================================
 
-# --- Recordings ---
+
 recordings/
-
-# --- OS Files ---
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# --- Editor Files ---
 .nvim/
 .vscode/
-.idea/
-*.swp
-*.swo
-*.swn
-*~
-.netrwhist
-tags
-
-# --- Logs ---
-*.log
-logs/
-log/
-
-# --- Build Artifacts ---
-*.o
-*.so
-*.a
-*.out
-*.bin
-*.elf
-build/
-dist/
-target/
-
-# --- Python ---
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-.Python
-*.egg
-*.egg-info/
-.eggs/
-pip-wheel-metadata/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
-venv/
-.venv/
-env/
-.env
-
-# --- Node ---
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.npm/
-.yarn/
-
-# --- Pacman/AUR Build ---
-pkg/
-src/
-*.pkg.tar.xz
-*.pkg.tar.zst
-
-# --- Temporary Files ---
-tmp/
-temp/
-*.tmp
-*.temp
-*.bak
-*.backup
-*.orig
-
-# --- Sensitive Files ---
-# Never commit these under any circumstances
-*.key
-*.pem
-*.p12
-*.pfx
-*.secret
-*.secrets
-.env
-.env.*
-secrets/
-credentials/
-id_rsa
-id_rsa.pub
-id_ed25519
-id_ed25519.pub
-*.gpg
-*.asc
-auth.json
-token.json
-
-# --- Package Manager Caches ---
-.cache/
-.npm/
-.yarn/
-__pypackages__/
-
-# --- Testing ---
-coverage/
-.coverage
-htmlcov/
-.tox/
-
-# --- Archives ---
 *.zip
 *.tar
 *.tar.gz
@@ -126,21 +12,6 @@ htmlcov/
 *.7z
 *.img
 *.img.gz
+*.img.xz
 
-# --- Images and Media ---
-# Uncomment if you do not want to track these
-# *.png
-# *.jpg
-# *.jpeg
-# *.gif
-# *.svg
-# *.mp4
-# *.webm
-
-# --- Cross OS Specific ---
-# Local test scripts not meant for repo
-test_local/
-local/
-scratch/
-playground/
-*.local.sh
+*.sha512sum
