@@ -1,6 +1,4 @@
-
-Date : 07:08:2026
-
+Date: *07:08:2026*
 # Void mklive
 
 After researching how to build a distribution using void, I found about the void mklive utility.
