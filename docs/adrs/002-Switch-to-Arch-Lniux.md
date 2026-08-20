@@ -17,9 +17,9 @@ These are the candidates that can act as new bases:
 * Pure Arch ( ALARM ) : No bloat clean Arch install.
 * Manjaro : Previously used, clean image. 
 
-**EndeavourOS** has been chosen as the new base for the following reasones;
-* Clean Image: Clean Installation image for all architectures.
-* Flexibble : Built on Arch and has backwards compatibility with it.
+**Arch Linux Arn** has been chosen as the new base for the following reasones;
+* Clean Base: Standard base for many distributions.
+* Flexibble : Can be cusomtised and made into anything.
 * Full Arch : Full Arch ecosystem.
 
 ## Consequences
@@ -33,4 +33,4 @@ The conseqences of this decision are as follows:
 The Benefits for using Arch as the base :
 * Rolling Release: Newest packages.
 * Arch Ecosystem: Large ecosystem of arch arm packages.
-
+* Standard: It is the standard has many guides and tested features.
