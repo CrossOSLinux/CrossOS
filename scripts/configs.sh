@@ -9,7 +9,7 @@ echo "--- Installing configs ---"
 
 # Hyprland
 mkdir -p ~/.config/hypr
-cp "$CONFIGS/hyprland/hyprland.conf" ~/.config/hypr/hyprland.conf
+cp "$CONFIGS/hyprland/hyprland.lua" ~/.config/hypr/hyprland.lua
 echo "Hyprland config installed."
 
 # Waybar
