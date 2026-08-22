@@ -1,129 +1,91 @@
 -- Cross OS - Hyprland Config
 -- Version: 0.2
--- Phase 3: noctallia 
+-- Phase 3: noctalia 
 
 -- --- Variables ---
 local terminal = "foot"
 local menu = "fuzzel"
 local mod = "SUPER"
 
-return {
-  -- --- Monitors ---
-  monitor = {
-    ",preferred,auto,auto",
-    "HEADLESS-1, 1920x1080, 0x0, 1",
-  },
+-- --- Monitors ---
+hl.set("monitor", ",preferred,auto,auto")
+hl.set("monitor", "HEADLESS-1, 1920x1080, 0x0, 1")
 
-  -- --- Autostart ---
-  exec_once = {
-    "noctalia",
-    "/usr/lib/polkit-kde-authentication-agent-1",
-    "wayvnc 0.0.0.0",
-  },
+-- --- Autostart ---
+hl.exec_once("noctalia")
+hl.exec_once("/usr/lib/polkit-kde-authentication-agent-1")
+hl.exec_once("wayvnc 0.0.0.0")
 
-  -- --- Environment ---
-  env = {
-    "XCURSOR_SIZE,24",
-    "HYPRCURSOR_SIZE,24",
-    "QT_QPA_PLATFORM,wayland",
-    "WLR_BACKENDS,headless,libinput",
-  },
+-- --- Environment ---
+hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("QT_QPA_PLATFORM", "wayland")
+hl.env("WLR_BACKENDS", "headless,libinput")
 
-  -- --- General ---
-  general = {
-    gaps_in = 5,
-    gaps_out = 10,
-    border_size = 1,
-    ["col.active_border"] = "rgba(cdd6f4ee)",
-    ["col.inactive_border"] = "rgba(595959aa)",
-    layout = "dwindle",
-  },
+-- --- General ---
+hl.set("general:gaps_in", 5)
+hl.set("general:gaps_out", 10)
+hl.set("general:border_size", 1)
+hl.set("general:col.active_border", "rgba(cdd6f4ee)")
+hl.set("general:col.inactive_border", "rgba(595959aa)")
+hl.set("general:layout", "dwindle")
 
-  -- --- Decoration ---
-  decoration = {
-    rounding = 20,
-    active_opacity = 1.0,
-    inactive_opacity = 0.77,
-    shadow = {
-      enabled = true,
-      range = 4,
-      render_power = 3,
-      color = "0xee1a1a1a",
-    },
-    blur = {
-      enabled = true,
-      size = 3,
-      passes = 2,
-      vibrancy = 0.1696,
-    },
-  },
+-- --- Decoration ---
+hl.set("decoration:rounding", 20)
+hl.set("decoration:active_opacity", 1.0)
+hl.set("decoration:inactive_opacity", 0.77)
 
-  -- --- Animations ---
-  animations = {
-    enabled = true,
-  },
+hl.set("decoration:shadow:enabled", true)
+hl.set("decoration:shadow:range", 4)
+hl.set("decoration:shadow:render_power", 3)
+hl.set("decoration:shadow:color", "0xee1a1a1a")
 
-  -- --- Dwindle ---
-  dwindle = {
-    preserve_split = true,
-  },
+hl.set("decoration:blur:enabled", true)
+hl.set("decoration:blur:size", 3)
+hl.set("decoration:blur:passes", 2)
+hl.set("decoration:blur:vibrancy", 0.1696)
 
-  -- --- Misc ---
-  misc = {
-    disable_hyprland_logo = true,
-    disable_splash_rendering = true,
-    force_default_wallpaper = 0,
-  },
+-- --- Animations ---
+hl.set("animations:enabled", true)
 
-  -- --- Input ---
-  input = {
-    kb_layout = "us",
-    follow_mouse = 1,
-    sensitivity = 0,
-    touchpad = {
-      natural_scroll = false,
-    },
-  },
+-- --- Dwindle ---
+hl.set("dwindle:preserve_split", true)
 
-  -- --- Keybinds ---
-  bind = {
-    -- Applications
-    mod .. ", Return, exec, " .. terminal,
-    mod .. ", C, killactive",
-    mod .. ", M, exit",
-    mod .. ", R, exec, " .. menu,
-    mod .. ", V, togglefloating",
-    mod .. ", F, fullscreen",
+-- --- Misc ---
+hl.set("misc:disable_hyprland_logo", true)
+hl.set("misc:disable_splash_rendering", true)
+hl.set("misc:force_default_wallpaper", 0)
 
-    -- Focus
-    mod .. ", left, movefocus, l",
-    mod .. ", right, movefocus, r",
-    mod .. ", up, movefocus, u",
-    mod .. ", down, movefocus, d",
+-- --- Input ---
+hl.set("input:kb_layout", "us")
+hl.set("input:follow_mouse", 1)
+hl.set("input:sensitivity", 0)
+hl.set("input:touchpad:natural_scroll", false)
 
-    -- Workspaces
-    mod .. ", 1, workspace, 1",
-    mod .. ", 2, workspace, 2",
-    mod .. ", 3, workspace, 3",
-    mod .. ", 4, workspace, 4",
-    mod .. ", 5, workspace, 5",
+-- --- Keybinds ---
+-- Applications
+hl.bind(mod, "Return", "exec", terminal)
+hl.bind(mod, "C", "killactive")
+hl.bind(mod, "M", "exit")
+hl.bind(mod, "R", "exec", menu)
+hl.bind(mod, "V", "togglefloating")
+hl.bind(mod, "F", "fullscreen")
 
-    -- Move window to workspace
-    mod .. " SHIFT, 1, movetoworkspace, 1",
-    mod .. " SHIFT, 2, movetoworkspace, 2",
-    mod .. " SHIFT, 3, movetoworkspace, 3",
-    mod .. " SHIFT, 4, movetoworkspace, 4",
-    mod .. " SHIFT, 5, movetoworkspace, 5",
-  },
+-- Focus
+hl.bind(mod, "left", "movefocus", "l")
+hl.bind(mod, "right", "movefocus", "r")
+hl.bind(mod, "up", "movefocus", "u")
+hl.bind(mod, "down", "movefocus", "d")
 
-  -- Mouse Binds
-  bindm = {
-    mod .. ", mouse:272, movewindow",
-    mod .. ", mouse:273, resizewindow",
-  },
+-- Workspaces
+for i = 1, 5 do
+    hl.bind(mod, tostring(i), "workspace", tostring(i))
+    hl.bind(mod .. " SHIFT", tostring(i), "movetoworkspace", tostring(i))
+end
 
-  -- --- Window Rules ---
-  windowrulev2 = {
-    "suppressevent maximize, class:.*",
-  },
-}
+-- Mouse Binds
+hl.bindm(mod, "mouse:272", "movewindow")
+hl.bindm(mod, "mouse:273", "resizewindow")
+
+-- --- Window Rules ---
+hl.set("windowrulev2", "suppressevent maximize, class:.*")
