@@ -9,7 +9,7 @@ echo "--- Installing configs ---"
 
 # Hyprland
 mkdir -p ~/.config/hypr
-cp "$CONFIGS/hyprland/hyprland.lua" ~/.config/hypr/hyprland.lua
+#cp "$CONFIGS/hyprland/hyprland.lua" ~/.config/hypr/hyprland.lua
 cp "$CONFIGS/hyprland/hyprland.conf" ~/.config/hypr/hyprland.conf
 
 echo "Hyprland config installed."
@@ -36,6 +36,8 @@ sudo cp "$CONFIGS/greetd/config.toml" /etc/greetd/config.toml
 echo "Greetd configured"
 
 # Fish
+mkdir -P ~/.config/fish/
+cp "$CONFIGS/fish/config.fish" ~/.config/fish/config.fish
 mkdir -p ~/.config/fish/functions
 cp "$CONFIGS/fish/functions/fish_prompt.fish" ~/.config/fish/functions/fish_prompt.fish
 
