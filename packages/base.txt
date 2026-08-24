@@ -14,3 +14,4 @@ curl
 gtk-update-icon-cache
 greetd
 networkmanager
+unzip
