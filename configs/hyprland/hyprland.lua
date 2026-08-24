@@ -1,91 +1,181 @@
--- Cross OS - Hyprland Config
--- Version: 0.2
--- Phase 3: noctalia 
+-- Hyprland Config 
+-- CrossOs 
+-- Version 0.1
 
--- --- Variables ---
-local terminal = "foot"
-local menu = "fuzzel"
-local mod = "SUPER"
 
--- --- Monitors ---
-hl.set("monitor", ",preferred,auto,auto")
-hl.set("monitor", "HEADLESS-1, 1920x1080, 0x0, 1")
+-- Monitor Setup
+hl.monitor({
+    output   = "DP-1",
+    mode     = "preferred",
+    position = "auto",
+    scale    = "auto",
+})
 
--- --- Autostart ---
-hl.exec_once("noctalia")
-hl.exec_once("/usr/lib/polkit-kde-authentication-agent-1")
-hl.exec_once("wayvnc 0.0.0.0")
+--- Apps
+local terminal    = "foot"
 
--- --- Environment ---
+-- Autostart
+hl.on("hyprland.start", function()
+  hl.exec_cmd("noctalia"),
+  hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1"),
+  
+end)
+
+--  Environment Variables
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("QT_QPA_PLATFORM", "wayland")
-hl.env("WLR_BACKENDS", "headless,libinput")
 
--- --- General ---
-hl.set("general:gaps_in", 5)
-hl.set("general:gaps_out", 10)
-hl.set("general:border_size", 1)
-hl.set("general:col.active_border", "rgba(cdd6f4ee)")
-hl.set("general:col.inactive_border", "rgba(595959aa)")
-hl.set("general:layout", "dwindle")
+--- Look and Feel
+hl.config({
+	general = {
+		gaps_in  = 5,
+		gaps_out = 10,
 
--- --- Decoration ---
-hl.set("decoration:rounding", 20)
-hl.set("decoration:active_opacity", 1.0)
-hl.set("decoration:inactive_opacity", 0.77)
+		border_size = 1,
 
-hl.set("decoration:shadow:enabled", true)
-hl.set("decoration:shadow:range", 4)
-hl.set("decoration:shadow:render_power", 3)
-hl.set("decoration:shadow:color", "0xee1a1a1a")
+		col = {
+			active_border = "rgba(cdd6f4ee)"
+			inactive_border = "rgba(595959aa)"
+		},
 
-hl.set("decoration:blur:enabled", true)
-hl.set("decoration:blur:size", 3)
-hl.set("decoration:blur:passes", 2)
-hl.set("decoration:blur:vibrancy", 0.1696)
+		layout = "dwindle",
+		
+	},
 
--- --- Animations ---
-hl.set("animations:enabled", true)
+	decoration = {
+		rounding = 0,
 
--- --- Dwindle ---
-hl.set("dwindle:preserve_split", true)
+		active_opacity = 1.0,
+		inactive_opacity = 0.77,
 
--- --- Misc ---
-hl.set("misc:disable_hyprland_logo", true)
-hl.set("misc:disable_splash_rendering", true)
-hl.set("misc:force_default_wallpaper", 0)
+		shadow = {
+			enabled = true,
+			range = 4,
+			color = 0xee1a1a1a,
+		},
 
--- --- Input ---
-hl.set("input:kb_layout", "us")
-hl.set("input:follow_mouse", 1)
-hl.set("input:sensitivity", 0)
-hl.set("input:touchpad:natural_scroll", false)
+		blur = {
+			enabled = true,
+			size = 3,
+			passes = 2,
+			vibrancy  = 0.1696,
+		}, 
+		
+	},
 
--- --- Keybinds ---
--- Applications
-hl.bind(mod, "Return", "exec", terminal)
-hl.bind(mod, "C", "killactive")
-hl.bind(mod, "M", "exit")
-hl.bind(mod, "R", "exec", menu)
-hl.bind(mod, "V", "togglefloating")
-hl.bind(mod, "F", "fullscreen")
+	animations = {
+		enabled = true,
+	},
+})
 
--- Focus
-hl.bind(mod, "left", "movefocus", "l")
-hl.bind(mod, "right", "movefocus", "r")
-hl.bind(mod, "up", "movefocus", "u")
-hl.bind(mod, "down", "movefocus", "d")
+-- Smart gaps and No gaps when only
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
+hl.window_rule({
+    name  = "no-gaps-wtv1",
+    match = { float = false, workspace = "w[tv1]" },
+    border_size = 0,
+    rounding    = 0,
+})
+hl.window_rule({
+    name  = "no-gaps-f1",
+    match = { float = false, workspace = "f[1]" },
+    border_size = 0,
+    rounding    = 0,
+})
 
--- Workspaces
-for i = 1, 5 do
-    hl.bind(mod, tostring(i), "workspace", tostring(i))
-    hl.bind(mod .. " SHIFT", tostring(i), "movetoworkspace", tostring(i))
+hl.config({
+    dwindle = {
+        preserve_split = true, 
+    },
+})
+
+-- Misc
+hl.config({
+    misc = {
+    	font_family = "Sans"
+		force_default_wallpaper = 0,
+		disable_splash_rendering = true,   
+		disable_hyprland_logo   = false, 
+    },
+})
+
+-- Input
+hl.config({
+    input = {
+        kb_layout  = "us",
+        kb_variant = "",
+        kb_model   = "",
+        kb_options = "",
+        kb_rules   = "",
+
+        follow_mouse = 1,
+
+        sensitivity = 0, 
+
+        touchpad = {
+            natural_scroll = false,
+        },
+    },
+})
+
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace"
+})
+
+
+-- Keybinds
+local mainMod = "SUPER"
+local ipc = "noctalia msg "
+
+-- Core binds
+hl.bind(mainMod .. " + C", hl.dsp.window.close()
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")) 
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({action = "toggle"}))
+hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
+hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+
+hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+
+for i = 1, 10 do
+    local key = i % 10 -- 10 maps to key 0
+    hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
+    hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Mouse Binds
-hl.bindm(mod, "mouse:272", "movewindow")
-hl.bindm(mod, "mouse:273", "resizewindow")
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
--- --- Window Rules ---
-hl.set("windowrulev2", "suppressevent maximize, class:.*")
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Media keys
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"))
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"))
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"))
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"))
+
+-- Noctalia Settings
+hl.window_rule({
+    match = { class = "dev.noctalia.Noctalia" },
+    float = true,
+    size = { 1080, 920 },
+})
+
+
+-- Windows and Workspaces
+hl.window_rule = ({
+	name = "sppress-maximise-events",
+	match = { class = ".*"},
+
+	suppress_event = "maximize",
+})
