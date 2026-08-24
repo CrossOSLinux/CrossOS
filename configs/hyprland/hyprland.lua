@@ -15,9 +15,9 @@ hl.monitor({
 local terminal    = "foot"
 
 -- Autostart
-hl.on("hyprland.start", function()
-  hl.exec_cmd("noctalia"),
-  hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1"),
+hl.on("hyprland.start", function ()
+	hl.exec_cmd("noctalia")
+	hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
   
 end)
 
@@ -34,8 +34,8 @@ hl.config({
 		border_size = 1,
 
 		col = {
-			active_border = "rgba(cdd6f4ee)"
-			inactive_border = "rgba(595959aa)"
+			active_border = "rgba(cdd6f4ee)",
+			inactive_border = "rgba(595959aa)",
 		},
 
 		layout = "dwindle",
@@ -93,7 +93,7 @@ hl.config({
 -- Misc
 hl.config({
     misc = {
-    	font_family = "Sans"
+    	font_family = "Sans",
 		force_default_wallpaper = 0,
 		disable_splash_rendering = true,   
 		disable_hyprland_logo   = false, 
@@ -131,7 +131,8 @@ local mainMod = "SUPER"
 local ipc = "noctalia msg "
 
 -- Core binds
-hl.bind(mainMod .. " + C", hl.dsp.window.close()
+hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")) 
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({action = "toggle"}))
