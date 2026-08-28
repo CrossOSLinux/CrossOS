@@ -12,12 +12,7 @@ sudo systemctl disable sddm 2>/dev/null || true
 sudo systemctl disable lightdm 2>/dev/null || true
 echo "Services configured."
 
-# --- Git ---
-echo "Configuring git..."
-git config --global user.name "crossfire"
-git config --global user.email "youremail@gmail.com"
-git config --global init.defaultBranch main
-echo "Git configured."
+
 
 # --- Fish ---
 echo "Setting up fish..."
