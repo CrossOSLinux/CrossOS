@@ -13,20 +13,12 @@ sudo systemctl disable lightdm 2>/dev/null || true
 echo "Services configured."
 
 
-
 # --- Fish ---
 echo "Setting up fish..."
 if ! grep -q "exec fish" ~/.bashrc; then
     echo '
 
-# Cross OS - Launch fish for interactive sessio
-if [[ $- == *i* ]]; then
-    exec fish
-fi' >> ~/.bashrc
-    echo "Fish activation added to bashrc."
-else
-    echo "Fish activation already in bashrc, skipping."
-fi
+
 echo "Fish setup complete."
 
 # Network manager 
