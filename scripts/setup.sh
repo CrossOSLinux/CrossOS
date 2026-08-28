@@ -16,9 +16,19 @@ echo "Services configured."
 # --- Fish ---
 echo "Setting up fish..."
 if ! grep -q "exec fish" ~/.bashrc; then
-    echo '
+    cat << 'EOF' >> ~/.bashrc
 
+# Auto-start Fish for interactive sessions
+if [[ $- == *i* ]]; then
+    exec fish
+fi
+EOF
+    echo "Added exec fish to bashrc"
+else
+    echo "Fish luanch alreadyh in bashrc, skipping"
+fi
 
+echo "-------------------"
 echo "Fish setup complete."
 
 # Network manager 
