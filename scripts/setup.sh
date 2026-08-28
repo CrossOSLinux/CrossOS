@@ -36,6 +36,11 @@ sudo systemctl enable NetworkManager
 sudo systemctl disable dhcpcd
 sudo systemctl stop dhcpcd
 
+# Wallpaper
+sudo mkdir -p /usr/share/backgrounds/crossos
+sudo cp assets/wallpapers/* /usr/share/backgrounds/crossos/
+
+
 echo "--- Setup Complete ---"
 echo ""
 echo " Have fun <_> "
