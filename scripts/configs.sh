@@ -8,6 +8,7 @@ CONFIGS="$CROSSOS_DIR/configs"
 echo "--- Installing configs ---"
 
 # Hyprland
+mkdir -P ~/.config/hypr/
 cp -r "$CONFIGS/hyprland/." ~/.config/hypr/
 
 echo "Hyprland config installed."
