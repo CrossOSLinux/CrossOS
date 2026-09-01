@@ -8,9 +8,8 @@ CONFIGS="$CROSSOS_DIR/configs"
 echo "--- Installing configs ---"
 
 # Hyprland
-mkdir -p ~/.config/hypr
-cp "$CONFIGS/hyprland/hyprland.lua" ~/.config/hypr/hyprland.lua
-#cp "$CONFIGS/hyprland/hyprland.conf" ~/.config/hypr/hyprland.conf
+mkdir -p ~/.config/hypr/
+cp -r "$CONFIGS/hyprland/." ~/.config/hypr/
 
 echo "Hyprland config installed."
 
@@ -21,13 +20,11 @@ echo "Hyprland config installed."
 #echo "Waybar config installed."
 
 # # Foot
-mkdir -p ~/.config/foot
-cp "$CONFIGS/foot/foot.ini" ~/.config/foot/foot.ini
+cp -r "$CONFIGS/foot/" ~/.config/
 echo "Foot config installed."
 
 # # Fuzzel
-mkdir -p ~/.config/fuzzel
-cp "$CONFIGS/fuzzel/fuzzel.ini" ~/.config/fuzzel/fuzzel.ini
+cp -r "$CONFIGS/fuzzel/" ~/.config/
 echo "Fuzzel config installed."
 #
 
@@ -36,10 +33,6 @@ sudo cp "$CONFIGS/greetd/config.toml" /etc/greetd/config.toml
 echo "Greetd configured"
 
 # Fish
-mkdir -P ~/.config/fish/
-cp "$CONFIGS/fish/config.fish" ~/.config/fish/config.fish
-mkdir -p ~/.config/fish/functions
-cp "$CONFIGS/fish/functions/fish_prompt.fish" ~/.config/fish/functions/fish_prompt.fish
-
+cp -r "$CONFIGS/fish/" ~/.config/
 
 echo "All configs installed."

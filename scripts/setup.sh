@@ -12,32 +12,34 @@ sudo systemctl disable sddm 2>/dev/null || true
 sudo systemctl disable lightdm 2>/dev/null || true
 echo "Services configured."
 
-# --- Git ---
-echo "Configuring git..."
-git config --global user.name "crossfire"
-git config --global user.email "youremail@gmail.com"
-git config --global init.defaultBranch main
-echo "Git configured."
 
 # --- Fish ---
 echo "Setting up fish..."
 if ! grep -q "exec fish" ~/.bashrc; then
-    echo '
+    cat << 'EOF' >> ~/.bashrc
 
-# Cross OS - Launch fish for interactive sessio
+# Auto-start Fish for interactive sessions
 if [[ $- == *i* ]]; then
     exec fish
-fi' >> ~/.bashrc
-    echo "Fish activation added to bashrc."
-else
-    echo "Fish activation already in bashrc, skipping."
 fi
+EOF
+    echo "Added exec fish to bashrc"
+else
+    echo "Fish luanch alreadyh in bashrc, skipping"
+fi
+
+echo "-------------------"
 echo "Fish setup complete."
 
 # Network manager 
 sudo systemctl enable NetworkManager
 sudo systemctl disable dhcpcd
 sudo systemctl stop dhcpcd
+
+# Wallpaper
+sudo mkdir -p /usr/share/backgrounds/crossos
+sudo cp assets/wallpapers/* /usr/share/backgrounds/crossos/
+
 
 echo "--- Setup Complete ---"
 echo ""
