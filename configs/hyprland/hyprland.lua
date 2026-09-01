@@ -3,7 +3,6 @@
 -- Version 0.2.0
 
 
-require("modules.apps")
 require("modules.monitors")
 require("modules.env_variables")
 require("modules.autostart")

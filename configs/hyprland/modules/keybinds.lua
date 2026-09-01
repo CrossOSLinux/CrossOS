@@ -1,7 +1,12 @@
 ---- Keybinds and Shortcuts 
 
+local apps = require("modules.apps")
+
 local mainMod = "SUPER"
 local ipc = "noctalia msg "
+
+-- Temporary fix 
+local terminal = "foot"
 
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(apps.terminal))
