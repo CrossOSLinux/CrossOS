@@ -12,4 +12,4 @@ hl.config({
 			inactive_border = "rgba(595959aa)",
 		},		
 	},
-)}
+})
