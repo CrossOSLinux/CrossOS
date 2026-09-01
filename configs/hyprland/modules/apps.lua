@@ -1,5 +1,7 @@
 -- Apps variables
 
-apps {
-	terminnl = "foot"
-}
+local terminal = "foot"
+
+
+
+return terminal
