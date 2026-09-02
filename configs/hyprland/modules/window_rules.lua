@@ -26,3 +26,11 @@ hl.window_rule = ({
 
 	suppress_event = "maximize",
 })
+
+hl.window_rule({
+  name = "all-floating",
+  match = {
+    class = ".*"
+  },
+  float = true,
+})
