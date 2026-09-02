@@ -20,7 +20,7 @@ hl.window_rule({
     size = { 1080, 920 },
 })
 
-hl.window_rule = ({
+hl.window_rule({
 	name = "sppress-maximise-events",
 	match = { class = ".*"},
 
@@ -28,9 +28,9 @@ hl.window_rule = ({
 })
 
 hl.window_rule({
-  name = "all-floating",
-  match = {
-    class = ".*"
-  },
-  float = true,
+	name = "all-floating",
+	match = { class = ".*" },
+
+	float = 1,
+	size = {"monitor_w * 0.5", "monitor_h * 0.5"}
 })
