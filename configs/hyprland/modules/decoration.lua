@@ -1,7 +1,8 @@
 -- Decoration section of Hyprland config
 hl.config({
 	decoration = {
-		rounding = 0,
+		rounding = 10,
+		rounding_power = 3,
 
 		active_opacity = 1.0,
 		inactive_opacity = 0.77,
