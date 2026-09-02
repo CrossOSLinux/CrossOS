@@ -10,9 +10,7 @@ hl.config({
         hyprbars = {
             bar_height = 50,
 			bar_color  = "rgb(363636)",
-			bar_text_size = 24,
-            
-            on_double_click = 'hl.dsp.window.fullscreen( mode = "fullscreen" ,{action = "set"})'', -- does not work
+			bar_text_size = 20,
 
             
         },
