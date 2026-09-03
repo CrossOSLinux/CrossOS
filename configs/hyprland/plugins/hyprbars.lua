@@ -8,10 +8,10 @@ end)
 hl.config({
     plugin = {
         hyprbars = {
-            bar_height = 50,
+            bar_height = 30,
 			bar_color  = "rgb(363636)",
 			bar_text_size = 20,
-
+			bar_part_of_window = true,
             
         },
     },
@@ -21,15 +21,15 @@ hl.config({
 hl.plugin.hyprbars.add_button({
     bg_color = "rgb(ff4040)",
     fg_color = "rgb(ffffff)",
-    size = 20,
-    icon = "X",
+    size = 15,
+    icon = "",
     action = "hyprctl dispatch 'hl.dsp.window.close()'",
 })
 
 hl.plugin.hyprbars.add_button({
     bg_color = "rgb(eeee11)",
     fg_color = "rgb(000000)",
-    size = 20,
-    icon = "_",
+    size = 15,
+    icon = "",
     action = [[hyprctl dispatch 'hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" })']],
 })
