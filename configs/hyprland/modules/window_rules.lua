@@ -34,3 +34,10 @@ hl.window_rule({
 	float = 1,
 	size = {"monitor_w * 0.5", "monitor_h * 0.5"}
 })
+
+hl.window_rule({
+	name = "minimum-window-size",
+	match = { class = ".*" },
+
+	min_size = { 500, 500}
+})
