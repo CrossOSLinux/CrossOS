@@ -13,6 +13,13 @@ hl.config({
 		col = {
 			active_border = "rgba(cdd6f4ee)",
 			inactive_border = "rgba(595959aa)",
-		},		
+		},
+
+		snap = {
+			enabled = true,
+			window_gap = 30,
+			monitor_gap = 30,
+			border_overlap = false,
+		},
 	},
 })
